@@ -5,36 +5,51 @@
 
 package it.unipd.mtss;
 
-public class RomanPrinter {
-    public static String print(int num) {
-        return printAsciiArt(IntegerToRoman.convert(num));
-    }
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
-    private static String printAsciiArt(String romanNumber) {
-        String asciiArt = "";
-        if (romanNumber.equals("I")) {
-            asciiArt =    " _____ \n" 
+public class RomanPrinterTest {
+    @Test
+    public void uno() {
+        String asciiArt = " _____ \n" 
                         + "|_   _|\n"
                         + "  | |  \n"
                         + "  | |  \n"
                         + " _| |_ \n"
                         + "|_____|\n";
-        } else if (romanNumber.equals("II")) {
-            asciiArt =    " _____   _____ \n" 
+
+        assertEquals(asciiArt, RomanPrinter.print(1));
+    }
+
+    @Test
+    public void due() {
+        String asciiArt = " _____   _____ \n" 
                         + "|_   _| |_   _|\n"
                         + "  | |     | |  \n"
                         + "  | |     | |  \n"
                         + " _| |_   _| |_ \n"
                         + "|_____| |_____|\n";
-        } else if (romanNumber.equals("III")) {
-            asciiArt =    " _____   _____   _____ \n" 
+
+        assertEquals(asciiArt, RomanPrinter.print(2));
+    }
+
+    @Test
+    public void tre() {
+        String asciiArt = " _____   _____   _____ \n" 
                         + "|_   _| |_   _| |_   _|\n"
                         + "  | |     | |     | |  \n"
                         + "  | |     | |     | |  \n"
                         + " _| |_   _| |_   _| |_ \n"
                         + "|_____| |_____| |_____|\n";
-        }
 
-        return asciiArt;
+        assertEquals(asciiArt, RomanPrinter.print(3));
     }
+
+
+
+
+
+
+
+
 }
