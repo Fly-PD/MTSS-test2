@@ -6,7 +6,9 @@
 package it.unipd.mtss;
 
 public class IntegerToRoman {
+    private IntegerToRoman() {}     // Altrimenti JaCoCo si aspetta test sull'istanziazione
+
     public static String convert(int number) {
-        return null;
+        return "I".repeat(number);
     }
 }
