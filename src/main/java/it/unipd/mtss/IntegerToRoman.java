@@ -8,14 +8,23 @@ package it.unipd.mtss;
 public class IntegerToRoman {
     private IntegerToRoman() {}     // Altrimenti JaCoCo si aspetta test sull'istanziazione
 
+    
     public static String convert(int number) {
+        int[] valori = {10, 9, 5, 4, 1};
+        String[] simboli_romani = {"X","IX","V","IV","I"};
         String result = "";
-        if (number == 5) { result = "V"; }
-        if (number == 4) { result = "IV"; }
-        if (number < 4) { result = "I".repeat(number); }
-        if (number > 5) {
-            result = "V" + "I".repeat(number - 5);
+        
+        for (int i = 0; i < valori.length && number > 0; i++) {
+            while (number >= valori[i]) {
+                number -= valori[i];
+                result += simboli_romani[i];
+            }
         }
-        return result;
+        return result.toString();
     }
 }
+
+
+// SYMBOLS "M",  "CM","D", "CD","C", "XC","L", "XL",
+
+// VALUES 1000, 900, 500, 400, 100, 90, 50, 40, 
