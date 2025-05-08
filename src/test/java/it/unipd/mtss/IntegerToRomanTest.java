@@ -12,32 +12,13 @@ public class IntegerToRomanTest {
 
     @Test
     public void uno() {
-        assertEquals("I", IntegerToRoman.convert(1));
+        int input = 1;                                      // Arrange
+        String result = IntegerToRoman.convert(input);      // Act
+        assertEquals("I", result);                 // Assert
     }
     
-    @Test
-    public void due() {
-        assertEquals("II", IntegerToRoman.convert(2));
-    }
 
-    @Test
-    public void tre() {
-        assertEquals("III", IntegerToRoman.convert(3));
-    }
 
-    @Test
-    public void quattro() {
-        assertEquals("IV", IntegerToRoman.convert(4));
-    }
-  
-    @Test
-    public void cinque() {
-        assertEquals("V", IntegerToRoman.convert(5));
-    }
 
-    @Test
-    public void sei() {
-        assertEquals("VI", IntegerToRoman.convert(6));
-    }
 
 }

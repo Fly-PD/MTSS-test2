@@ -11,6 +11,14 @@ public class RomanPrinter {
     }
 
     private static String printAsciiArt(String romanNumber) {
+        return null;
+    }
+}
+
+
+
+/*
+ * private static String printAsciiArt(String romanNumber) {
         String asciiArt = "";
         if (romanNumber.equals("I")) {
             asciiArt =    " _____ \n" 
@@ -37,4 +45,4 @@ public class RomanPrinter {
 
         return asciiArt;
     }
-}
+ */
