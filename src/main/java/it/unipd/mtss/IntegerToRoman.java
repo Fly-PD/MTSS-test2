@@ -9,6 +9,13 @@ public class IntegerToRoman {
     private IntegerToRoman() {}     // Altrimenti JaCoCo si aspetta test sull'istanziazione
 
     public static String convert(int number) {
-        return "I".repeat(number);
+        String result = "";
+        if (number == 5) { result = "V"; }
+        if (number == 4) { result = "IV"; }
+        if (number < 4) { result = "I".repeat(number); }
+        if (number > 5) {
+            result = "V" + "I".repeat(number - 5);
+        }
+        return result;
     }
 }
