@@ -5,36 +5,56 @@
 
 package it.unipd.mtss;
 
+import java.util.Dictionary;
+import java.util.Hashtable;
+
 public class RomanPrinter {
     public static String print(int num) {
         return printAsciiArt(IntegerToRoman.convert(num));
     }
 
     private static String printAsciiArt(String romanNumber) {
-        String asciiArt = "";
-        if (romanNumber.equals("I")) {
-            asciiArt =    " _____ \n" 
-                        + "|_   _|\n"
-                        + "  | |  \n"
-                        + "  | |  \n"
-                        + " _| |_ \n"
-                        + "|_____|\n";
-        } else if (romanNumber.equals("II")) {
-            asciiArt =    " _____   _____ \n" 
-                        + "|_   _| |_   _|\n"
-                        + "  | |     | |  \n"
-                        + "  | |     | |  \n"
-                        + " _| |_   _| |_ \n"
-                        + "|_____| |_____|\n";
-        } else if (romanNumber.equals("III")) {
-            asciiArt =    " _____   _____   _____ \n" 
-                        + "|_   _| |_   _| |_   _|\n"
-                        + "  | |     | |     | |  \n"
-                        + "  | |     | |     | |  \n"
-                        + " _| |_   _| |_   _| |_ \n"
-                        + "|_____| |_____| |_____|\n";
+        if (!romanNumber.matches("[IVXLCDM]+")) {
+            throw new IllegalArgumentException();
         }
+        String[] I = {
+                " _____ ",
+                "|_   _|",
+                "  | |  ",
+                "  | |  ",
+                " _| |_ ",
+                "|_____|"
+        };
+        String[] V = {
+                "__      __",
+                "\\ \\    / /",
+                " \\ \\  / / ",
+                "  \\ \\/ /  ",
+                "   \\  /   ",
+                "    \\/    "
+        };
+        String[] X = {
+                "__   __",
+                "\\ \\ / /",
+                " \\ V / ",
+                "  > <  ",
+                " / . \\ ",
+                "/_/ \\_\\"
+        };
+        String[] lines = { "", "", "", "", "", "" };
+        for (int j = 0; j < romanNumber.length(); j++) {
+            String[] letter;
+            if (romanNumber.charAt(j) == 'I') { letter = I; } 
+            else if (romanNumber.charAt(j) == 'V') { letter = V; } 
+            else { letter = X; }
 
-        return asciiArt;
+            for (int i = 0; i < 6; i++) {
+                lines[i] += letter[i];
+                if (j < romanNumber.length() - 1) {
+                    lines[i] += " ";
+                }
+            }
+        }
+        return String.join("\n", lines) + "\n";
     }
 }
